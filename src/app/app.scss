@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.login-page{
+    width:100%;
+    height:100vh;
+
+ background-image: url("/img/fundo-onibus.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+}
+
+.login-box{
+    position:relative;
+    z-index:2;
+
+    width:380px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+.logo{
+    width:90px;
+    margin-bottom:15px;
+}
+
+h2{
+    margin-bottom:10px;
+}
+
+p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    text-align:left;
+    margin-top:15px;
+    margin-bottom:5px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#000;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff9800;
+}
+
+a{
+    display:block;
+    margin-top:15px;
+    color:#333;
+}
+
+.termos{
+    display:block;
+    margin-top:20px;
+    font-size:12px;
+    color:#777;
+}
