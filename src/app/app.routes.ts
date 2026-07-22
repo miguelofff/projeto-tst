@@ -1,55 +1,76 @@
 import { Routes } from '@angular/router';
 
-import { LoginComponent } from './pages/login/login.component';
-import { LayoutComponent } from './pages/layout/layout.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
-import { TreinamentosComponent } from './pages/treinamentos/treinamentos.component';
-import { EpisComponent } from './pages/epis/epis.component';
-import { RiscosComponent } from './pages/riscos/riscos.component';
-import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
+import { Layout } from './pages/layout/layout';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { Usuarios } from './pages/usuarios/usuarios';
+import { Treinamentos } from './pages/treinamentos/treinamentos';
+import { Epis } from './pages/epis/epis';
+import { Riscos } from './pages/riscos/riscos';
+import { Relatorios } from './pages/relatorios/relatorios';
+import { Login } from './pages/login/login';
+
+// export const routes: Routes = [
+//     // Rotas públicas
+//     {path: '', redirectTo: 'login', pathMatch: 'full'},
+//     {path: 'login', component: Login},
+//     // {path: 'unauthorized', component: Unauthorized},
+
+//     // Rotas privadas
+//     { path: '', component: Layout, canActivate: [authGuard] },
+//     { path: '/dashboard', component: Dashboard, canActivate: [authGuard] },
+//     { path: '/usuarios', component: Usuarios, canActivate: [authGuard] },
+//     { path: '/treinamentos', component: Treinamentos, canActivate: [authGuard] },
+//     { path: '/epis', component: Epis, canActivate: [authGuard] },
+//     { path: '/riscos', component: Riscos, canActivate: [authGuard] },
+//     { path: '/relatorios', component: Relatorios, canActivate: [authGuard] }
+// ];
 
 export const routes: Routes = [
 
   {
     path: '',
-    component: LoginComponent
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'login',
+    component: Login
   },
 
   {
     path: 'sistema',
-    component: LayoutComponent,
-
+    component: Layout,
     children: [
 
       {
         path: '',
-        component: DashboardComponent
+        component: Dashboard
       },
 
       {
         path: 'usuarios',
-        component: UsuariosComponent
+        component: Usuarios
       },
 
       {
         path: 'treinamentos',
-        component: TreinamentosComponent
+        component: Treinamentos
       },
 
       {
         path: 'epis',
-        component: EpisComponent
+        component: Epis
       },
 
       {
         path: 'riscos',
-        component: RiscosComponent
+        component: Riscos
       },
 
       {
         path: 'relatorios',
-        component: RelatoriosComponent
+        component: Relatorios
       }
 
     ]

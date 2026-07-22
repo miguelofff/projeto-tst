@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-treinamentos',
+  selector: 'app-relatorios',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './treinamentos.html',
-  styleUrl: './treinamentos.scss',
+  templateUrl: './relatorios.html',
+  styleUrl: './relatorios.scss',
 })
-export class Treinamentos { }
+export class Relatorios {}

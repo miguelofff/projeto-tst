@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-riscos',
-  imports: [],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './riscos.html',
   styleUrl: './riscos.scss',
 })

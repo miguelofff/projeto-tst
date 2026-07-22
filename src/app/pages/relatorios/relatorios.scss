@@ -1,0 +1,31 @@
+.relatorios {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+button {
+  margin-right: 10px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:first-child {
+  background: #dc3545;
+  color: white;
+}
+
+button:last-child {
+  background: #198754;
+  color: white;
+}
+
+ul {
+  margin-top: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
