@@ -3,14 +3,14 @@
     <div class="brand">
       <img class="brand-logo" src="/assets/logo.png" alt="Logo" />
       <h1>Acesse sua conta</h1>
-      <p>Digite sua matrícula e senha para acessar a plataforma</p>
+      <p>Digite seu usuário e senha para acessar a plataforma</p>
     </div>
 
     <form (ngSubmit)="fazerLogin()" class="login-form">
 
       <label>
-        <span>Nome</span>
-        <input [(ngModel)]="usuario" name="usuario" type="text" placeholder="Digite seu nome" required />
+        <span>Usuário</span>
+        <input [(ngModel)]="usuario" name="usuario" type="text" placeholder="Digite seu usuário" required />
       </label>
 
       <label>
