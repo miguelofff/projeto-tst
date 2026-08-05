@@ -1,30 +1,20 @@
 <div class="layout">
 
   <aside class="sidebar">
-    <h2>Sistema SST</h2>
+    <div class="brand">
+      <img class="brand-logo" src="/assets/logo.png" alt="Logo">
+      <div class="brand-text">Crisântemos</div>
+    </div>
 
     <nav>
-      <a routerLink="/sistema">Dashboard</a>
-
-      <a routerLink="/sistema/usuarios">
-        Usuários
-      </a>
-
-      <a routerLink="/sistema/treinamentos">
-        Treinamentos
-      </a>
-
-      <a routerLink="/sistema/epis">
-        Controle de EPIs
-      </a>
-
-      <a routerLink="/sistema/riscos">
-        Gestão de Riscos
-      </a>
-
-      <a routerLink="/sistema/relatorios">
-        Relatórios
-      </a>
+      <ul>
+        <li><a routerLink="/sistema/treinamentos" routerLinkActive="active">Treinamentos</a></li>
+        <li><a routerLink="/sistema" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+        <li><a routerLink="/sistema/epis" routerLinkActive="active">Controle de EPIs</a></li>
+        <li><a routerLink="/sistema/riscos" routerLinkActive="active">Gestão de Riscos</a></li>
+        <li><a routerLink="/sistema/relatorios" routerLinkActive="active">Relatórios</a></li>
+        <li><a routerLink="/sistema/usuarios" routerLinkActive="active">Usuários</a></li>
+      </ul>
     </nav>
   </aside>
 

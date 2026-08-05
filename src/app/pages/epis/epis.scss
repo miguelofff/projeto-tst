@@ -3,13 +3,27 @@ h2 {
 }
 
 button {
-  background: #28a745;
-  color: white;
+  color: white !important;
   padding: 8px 14px;
-  border: none;
+  border: none !important;
   border-radius: 4px;
-  margin-bottom: 15px;
   cursor: pointer;
+  background: #28a745 !important;
+}
+
+table td button:first-child {
+  background-color: #28a745 !important;
+  color: white !important;
+}
+
+table td button:last-child {
+  background-color: #1d4ed8 !important;
+  color: white !important;
+  margin-right: 0;
+}
+
+td button {
+  margin-right: 8px;
 }
 
 table {

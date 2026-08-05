@@ -1,24 +1,26 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [FormsModule],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrl: './login.scss',
 })
 export class Login {
-
   usuario = '';
   senha = '';
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  login() {
-    if (this.usuario === 'admin' && this.senha === '123') {
-      this.router.navigate(['/sistema/usuarios']);
+  fazerLogin(): void {
+    const sucesso = this.authService.login(this.usuario, this.senha);
+
+    if (sucesso) {
+      this.router.navigate(['/sistema']);
     } else {
       alert('Usuário ou senha inválidos');
     }

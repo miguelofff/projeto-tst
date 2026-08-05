@@ -1,27 +1,29 @@
-<div class="container">
+﻿<div class="login-page">
+  <div class="login-card">
+    <div class="brand">
+      <img class="brand-logo" src="/assets/logo.png" alt="Logo" />
+      <h1>Acesse sua conta</h1>
+      <p>Digite sua matrícula e senha para acessar a plataforma</p>
+    </div>
 
-    <aside class="sidebar">
+    <form (ngSubmit)="fazerLogin()" class="login-form">
 
-        <h2>Sistema SST</h2>
+      <label>
+        <span>Nome</span>
+        <input [(ngModel)]="usuario" name="usuario" type="text" placeholder="Digite seu nome" required />
+      </label>
 
-        <a routerLink="/sistema">Dashboard</a>
+      <label>
+        <span>Senha</span>
+        <input [(ngModel)]="senha" name="senha" type="password" placeholder="Insira sua senha" required />
+      </label>
 
-        <a routerLink="/sistema/usuarios">Usuários</a>
+      <button type="submit">Entrar</button>
+      <a class="forgot-link" href="#">Recuperar Senha</a>
+    </form>
 
-        <a routerLink="/sistema/treinamentos">Treinamentos</a>
-
-        <a routerLink="/sistema/epis">Controle de EPIs</a>
-
-        <a routerLink="/sistema/riscos">Gestão de Riscos</a>
-
-        <a routerLink="/sistema/relatorios">Relatórios</a>
-
-    </aside>
-
-    <main class="conteudo">
-
-        <router-outlet></router-outlet>
-
-    </main>
-
+    <p class="terms">
+      Ao continuar, você concorda com nossos <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>
+    </p>
+  </div>
 </div>

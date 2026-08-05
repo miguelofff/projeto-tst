@@ -27,6 +27,10 @@ button {
   cursor: pointer;
 }
 
+button + button {
+  margin-left: 10px;
+}
+
 button:first-of-type {
   background: #28a745;
   color: white;
