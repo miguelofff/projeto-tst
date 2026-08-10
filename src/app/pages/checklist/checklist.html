@@ -1,0 +1,304 @@
+<div class="container-fluid checklist-page">
+
+    <!-- Cabeçalho -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+
+            <div class="d-flex align-items-center mb-4">
+
+                <div class="icon-box me-3">
+                    <i class="bi bi-clipboard2-check-fill"></i>
+                </div>
+
+                <div>
+                    <h2 class="fw-bold mb-0">
+                        Checklist de Segurança
+                    </h2>
+
+                    <small class="text-muted">
+                        Inspeção de Segurança do Trabalho
+                    </small>
+
+                </div>
+
+            </div>
+
+            <!-- Informações -->
+
+            <div class="row g-3">
+
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        Data
+                    </label>
+
+                    <input type="date" class="form-control">
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        Local
+                    </label>
+
+                    <input type="text" class="form-control" placeholder="Local da inspeção">
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        Responsável
+                    </label>
+
+                    <input type="text" class="form-control" placeholder="Nome do responsável">
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        Setor
+                    </label>
+
+                    <input type="text" class="form-control" placeholder="Setor">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Checklist -->
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-header">
+
+            <h5 class="mb-0">
+
+                Itens de Verificação
+
+            </h5>
+
+        </div>
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead>
+
+                        <tr>
+
+                            <th width="40%">Item</th>
+
+                            <th class="text-center">Sim</th>
+
+                            <th class="text-center">Não</th>
+
+                            <th>Observações</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <!-- ITEM -->
+
+                        <tr>
+
+                            <td>Uso correto de EPI</td>
+
+                            <td class="text-center">
+                                <input type="radio" name="epi">
+                            </td>
+
+                            <td class="text-center">
+                                <input type="radio" name="epi">
+                            </td>
+
+                            <!-- <td class="text-center">
+                            <input type="radio" name="epi2">
+                        </td>
+
+                        <td class="text-center">
+                            <input type="radio" name="epi2">
+                        </td> -->
+
+                            <td>
+                                <input class="form-control" placeholder="Observações">
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Extintor disponível e válido</td>
+
+                            <td class="text-center"><input type="radio" name="ext1"></td>
+
+                            <td class="text-center"><input type="radio" name="ext1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="ext2"></td>
+
+                        <td class="text-center"><input type="radio" name="ext2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Saídas de emergência sinalizadas</td>
+
+                            <td class="text-center"><input type="radio" name="saida1"></td>
+
+                            <td class="text-center"><input type="radio" name="saida1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="saida2"></td>
+
+                        <td class="text-center"><input type="radio" name="saida2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Piso limpo e sem obstáculos</td>
+
+                            <td class="text-center"><input type="radio" name="piso1"></td>
+
+                            <td class="text-center"><input type="radio" name="piso1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="piso2"></td>
+
+                        <td class="text-center"><input type="radio" name="piso2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Máquinas com proteção</td>
+
+                            <td class="text-center"><input type="radio" name="maq1"></td>
+
+                            <td class="text-center"><input type="radio" name="maq1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="maq2"></td>
+
+                        <td class="text-center"><input type="radio" name="maq2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Iluminação adequada</td>
+
+                            <td class="text-center"><input type="radio" name="ilu1"></td>
+
+                            <td class="text-center"><input type="radio" name="ilu1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="ilu2"></td>
+
+                        <td class="text-center"><input type="radio" name="ilu2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Kit de Primeiros Socorros</td>
+
+                            <td class="text-center"><input type="radio" name="kit1"></td>
+
+                            <td class="text-center"><input type="radio" name="kit1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="kit2"></td>
+
+                        <td class="text-center"><input type="radio" name="kit2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Quadro elétrico identificado</td>
+
+                            <td class="text-center"><input type="radio" name="q1"></td>
+
+                            <td class="text-center"><input type="radio" name="q1"></td>
+
+                            <!-- <td class="text-center"><input type="radio" name="q2"></td>
+
+                        <td class="text-center"><input type="radio" name="q2"></td> -->
+
+                            <td><input class="form-control"></td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Observações -->
+
+    <div class="card mt-4 shadow-sm border-0">
+
+        <div class="card-body">
+
+            <label class="form-label">
+
+                Observações Gerais
+
+            </label>
+
+            <textarea rows="5" class="form-control" placeholder="Digite observações sobre a inspeção..."></textarea>
+
+        </div>
+
+    </div>
+
+    <!-- Botões -->
+
+    <div class="d-flex justify-content-end mt-4 gap-3">
+
+        <button class="btn btn-outline-secondary">
+
+            <i class="bi bi-x-circle"></i>
+
+            Cancelar
+
+        </button>
+
+        <button class="btn btn-success px-4">
+
+            <i class="bi bi-check-circle"></i>
+
+            Salvar Checklist
+
+        </button>
+
+    </div>
+
+</div>

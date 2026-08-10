@@ -1,0 +1,93 @@
+.checklist-page {
+
+    padding: 25px;
+
+    .card {
+
+        border-radius: 15px;
+
+    }
+
+    .card-header {
+
+        background: #0d3b66;
+        color: white;
+        font-weight: 600;
+
+    }
+
+    .icon-box {
+
+        width: 60px;
+        height: 60px;
+
+        background: #0d3b66;
+
+        border-radius: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: white;
+
+        font-size: 28px;
+
+    }
+
+    .table {
+
+        thead {
+
+            background: #0d3b66;
+            color: white;
+
+            th {
+
+                border: none;
+                padding: 16px;
+
+            }
+
+        }
+
+        tbody {
+
+            tr:hover {
+
+                background: #f5f8fb;
+
+            }
+
+            td {
+
+                padding: 15px;
+
+            }
+
+        }
+
+    }
+
+    input[type="radio"]{
+
+        transform: scale(1.25);
+        cursor: pointer;
+
+    }
+
+    textarea,
+    input.form-control{
+
+        border-radius:10px;
+
+    }
+
+    .btn{
+
+        border-radius:10px;
+        min-width:170px;
+
+    }
+
+}
