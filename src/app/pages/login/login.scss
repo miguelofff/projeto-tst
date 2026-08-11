@@ -20,7 +20,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
 }
 
 .brand {
@@ -37,7 +37,7 @@
   display: grid;
   place-items: center;
   border-radius: 18px;
-  background: #f3e6c2;
+  background: rgba(255, 255, 255, 0.85);
   color: #b17d16;
   font-size: 28px;
 }
@@ -45,7 +45,8 @@
 .brand h1 {
   margin: 0;
   font-size: 24px;
-  color: #1d2733;
+  color: #ffffff;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .brand-logo {
@@ -56,9 +57,10 @@
 
 .brand p {
   margin: 0;
-  color: #5e6c7e;
+  color: #f3f4f6;
   font-size: 14px;
   line-height: 1.6;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .login-form {
@@ -71,19 +73,19 @@
   display: grid;
   gap: 10px;
   font-size: 14px;
-  color: #4a586a;
+  color: #ffffff;
   width: 100%;
 }
 
 .login-form input {
   width: 100%;
   padding: 16px 11px;
-  border: 1px solid #6b88af;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   outline: none;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.92);
   font-size: 14px;
-  color: #243048;
+  color: #111827;
 }
 
 .login-form button {
