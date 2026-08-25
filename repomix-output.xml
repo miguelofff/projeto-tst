@@ -7766,137 +7766,257 @@ export class Footer {
 <file path="src/app/pages/layout/layout.html">
 <div class="layout">
 
+  <!-- SIDEBAR -->
   <aside class="sidebar">
+
+    <!-- LOGO -->
     <div class="brand">
-      <img class="brand-logo" src="/assets/logo03.png" alt="Logo">
-      <!-- <div class="brand-text">Crisântemos</div> -->
+      <img
+        class="brand-logo"
+        src="/assets/logo03.png"
+        alt="Logo"
+      >
     </div>
 
+
+    <!-- MENU -->
     <nav>
       <ul>
-        <li><a routerLink="/sistema" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Visão Geral</a></li>
-        <li><a routerLink="/sistema/treinamentos" routerLinkActive="active">Treinamentos</a></li>
-        <li><a routerLink="/sistema/epis" routerLinkActive="active">Controle de EPIs</a></li>
-        <li><a routerLink="/sistema/riscos" routerLinkActive="active">Gestão de Riscos</a></li>
-        <li><a routerLink="/sistema/checklist" routerLinkActive="active">Checklist de Segurança</a></li>
-        <li><a routerLink="/sistema/relatorios" routerLinkActive="active">Relatórios</a></li>
+
+        <li>
+          <a
+            routerLink="/sistema"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Visão Geral
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/sistema/treinamentos"
+            routerLinkActive="active"
+          >
+            Treinamentos
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/sistema/epis"
+            routerLinkActive="active"
+          >
+            Controle de EPIs
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/sistema/riscos"
+            routerLinkActive="active"
+          >
+            Gestão de Riscos
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/sistema/checklist"
+            routerLinkActive="active"
+          >
+            Checklist de Segurança
+          </a>
+        </li>
+
+        <li>
+          <a
+            routerLink="/sistema/relatorios"
+            routerLinkActive="active"
+          >
+            Relatórios
+          </a>
+        </li>
+
+
+        <!-- MENU DE USUÁRIOS — SOMENTE ADMIN -->
         @if (authService.isAdmin()) {
-  <li>
-    <a routerLink="/sistema/usuarios" routerLinkActive="active">
-      Usuários
-    </a>
-  </li>
-}
+
+          <li>
+            <a
+              routerLink="/sistema/usuarios"
+              routerLinkActive="active"
+            >
+              Usuários
+            </a>
+          </li>
+
+        }
+
       </ul>
     </nav>
 
-    ```html
-<div class="sidebar-footer">
 
-  <div class="profile-container">
+    <!-- PERFIL NO FINAL DA SIDEBAR -->
+    <div class="sidebar-footer">
 
-    <button
-      type="button"
-      class="profile-area"
-      (click)="menuPerfilAberto = !menuPerfilAberto"
-    >
+      <div class="profile-container">
 
-      <img
-        class="profile-avatar"
-        src="assets/usericon.png"
-        alt="Usuário"
-      />
-
-      <div class="profile-text">
-        <strong>{{ authService.getUsuario()?.nome || 'Usuário' }}</strong>
-        <span>{{ authService.getUsuario()?.perfil || 'Usuário' }}</span>
-      </div>
-
-      <span class="profile-menu-arrow">
-        ›
-      </span>
-
-    </button>
-
-    @if (menuPerfilAberto) {
-
-      <div class="profile-menu">
-
-        <a
-          routerLink="/sistema/perfil"
-          (click)="fecharMenuPerfil()"
-          class="profile-menu-item"
-        >
-          <span class="profile-menu-icon">
-            👤
-          </span>
-
-          <span>Meu perfil</span>
-        </a>
-
-        <div class="profile-menu-divider"></div>
-
-        <a
-          href="#"
-          (click)="fecharMenuPerfil()"
-          class="profile-menu-item"
-        >
-          <span class="profile-menu-icon">
-            ?
-          </span>
-
-          <span>Ajuda</span>
-
-          <span class="profile-menu-item-arrow">
-            ›
-          </span>
-        </a>
-
-        <div class="profile-menu-divider"></div>
-
+        <!-- BOTÃO DO PERFIL -->
         <button
           type="button"
-          class="profile-menu-item profile-menu-logout"
-          (click)="logout()"
+          class="profile-area"
+          (click)="menuPerfilAberto = !menuPerfilAberto"
         >
-          <span class="profile-menu-icon">
-            ⇥
+
+          <img
+            class="profile-avatar"
+            src="assets/usericon.png"
+            alt="Usuário"
+          >
+
+          <div class="profile-text">
+
+            <strong>
+              {{ authService.getUsuarioLogado()?.nome || 'Usuário' }}
+            </strong>
+
+            <span>
+              {{ authService.isAdmin() ? 'Administrador' : 'Colaborador' }}
+            </span>
+
+          </div>
+
+          <span class="profile-dots">
+            •••
           </span>
 
-          <span>Sair</span>
         </button>
+
+
+        <!-- MENU DO PERFIL -->
+        @if (menuPerfilAberto) {
+
+          <div class="profile-menu">
+
+            <!-- USUÁRIO -->
+            <div class="profile-menu-user">
+
+              <div class="profile-menu-avatar">
+                <img
+                  src="assets/usericon.png"
+                  alt="Usuário"
+                >
+              </div>
+
+              <div class="profile-menu-user-info">
+
+                <strong>
+                  {{ authService.getUsuarioLogado()?.nome || 'Usuário' }}
+                </strong>
+
+                <span>
+                  {{ authService.isAdmin() ? 'Administrador' : 'Colaborador' }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- DIVISÓRIA -->
+            <div class="profile-menu-divider"></div>
+
+
+            <!-- MEU PERFIL -->
+            <a
+              routerLink="/sistema/perfil"
+              (click)="fecharMenuPerfil()"
+              class="profile-menu-item"
+            >
+
+              <span class="profile-menu-icon">
+                👤
+              </span>
+
+              <span>
+                Meu perfil
+              </span>
+
+            </a>
+
+
+            <!-- AJUDA -->
+            <a
+              href="#"
+              (click)="fecharMenuPerfil()"
+              class="profile-menu-item"
+            >
+
+              <span class="profile-menu-icon">
+                ?
+              </span>
+
+              <span>
+                Ajuda
+              </span>
+
+              <span class="profile-menu-item-arrow">
+                ›
+              </span>
+
+            </a>
+
+
+            <!-- DIVISÓRIA -->
+            <div class="profile-menu-divider"></div>
+
+
+            <!-- SAIR -->
+            <button
+              type="button"
+              class="profile-menu-item profile-menu-logout"
+              (click)="logout()"
+            >
+
+              <span class="profile-menu-icon">
+                ⇥
+              </span>
+
+              <span>
+                Sair
+              </span>
+
+            </button>
+
+          </div>
+
+        }
 
       </div>
 
-    }
+    </div>
 
-  </div>
-
-</div>
-
-<div class="main-area">
-
-  <app-topbar></app-topbar>
-
-  <main class="conteudo">
-    <router-outlet></router-outlet>
-  </main>
-
-</div>
+  </aside>
 
 
-    
-
+  <!-- ÁREA PRINCIPAL -->
   <div class="main-area">
+
+    <!-- TOPBAR -->
     <app-topbar></app-topbar>
 
+
+    <!-- CONTEÚDO DAS PÁGINAS -->
     <main class="conteudo">
+
       <router-outlet></router-outlet>
+
     </main>
 
-    
-
   </div>
+
+</div>
 </file>
 
 <file path="src/app/pages/layout/layout.scss">
@@ -8303,12 +8423,10 @@ describe('Layout', () => {
 
 <file path="src/app/pages/layout/layout.ts">
 import { Component } from '@angular/core';
-import {
-  RouterLink,
-  RouterLinkActive,
-  RouterOutlet
-} from '@angular/router';
-import { Topbar } from '../topbar/topbar';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Topbar } from "../topbar/topbar";
+import { Sidebar } from "../sidebar/sidebar";
+import { Footer } from "../footer/footer";
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8319,19 +8437,20 @@ import { AuthService } from '../../services/auth.service';
     RouterLinkActive,
     RouterOutlet,
     Topbar
-  ],
+],
   templateUrl: './layout.html',
   styleUrl: './layout.scss'
 })
 export class Layout {
 
-  menuPerfilAberto = false;
+   menuPerfilAberto = false;
+
 
   constructor(
     public authService: AuthService
   ) {}
 
-  fecharMenuPerfil(): void {
+   fecharMenuPerfil(): void {
     this.menuPerfilAberto = false;
   }
 
@@ -8343,207 +8462,485 @@ export class Layout {
 </file>
 
 <file path="src/app/pages/login/login.html">
+```html
 <div class="login-page">
 
-  <div class="login-card">
 
-    <div class="brand">
+  @if (!recuperandoSenha) {
 
-      <img
-        class="brand-logo"
-        src="/assets/logo.png"
-        alt="Logo"
-      />
+    <div class="login-card">
 
-      <h1>Acesse sua conta</h1>
+      <div class="login-header">
+        <h1>Entrar</h1>
+        <p>Acesse sua conta para continuar</p>
+      </div>
 
-      <p>
-        Digite seu usuário e senha para acessar a plataforma
-      </p>
+      <form (ngSubmit)="fazerLogin()">
+
+        <div class="form-group">
+          <label for="usuario">Usuário</label>
+
+          <input
+            id="usuario"
+            type="text"
+            name="usuario"
+            [(ngModel)]="usuario"
+            placeholder="Digite seu usuário"
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+
+          <input
+            id="senha"
+            type="password"
+            name="senha"
+            [(ngModel)]="senha"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn-login"
+        >
+          Entrar
+        </button>
+
+      </form>
+
+      <button
+        type="button"
+        class="btn-recuperar"
+        (click)="abrirRecuperacao()"
+      >
+        Esqueci minha senha
+      </button>
 
     </div>
 
-    <form
-      (ngSubmit)="fazerLogin()"
-      
-      class="login-form"
-    >
+  }
 
-      <label>
-        <span>Usuário</span>
 
-        <input
-          [(ngModel)]="usuario"
-          name="usuario"
-          type="text"
-          placeholder="Digite seu usuário"
-          required
-        />
-      </label>
+  @if (recuperandoSenha) {
 
-      <label>
-        <span>Senha</span>
+    <div class="login-card recuperacao-card">
 
-        <input
-          [(ngModel)]="senha"
-          name="senha"
-          type="password"
-          placeholder="Digite sua senha"
-          required
-        />
-      </label>
+      @if (etapaRecuperacao === 1) {
 
-      <button type="submit">
-        Entrar
-      </button>
+        <div class="login-header">
+          <h1>Recuperar senha</h1>
+          <p>Informe seu usuário para continuar</p>
+        </div>
 
-    </form>
+        <div class="form-group">
+          <label for="usuarioRecuperacao">
+            Usuário
+          </label>
 
-  </div>
+          <input
+            id="usuarioRecuperacao"
+            type="text"
+            name="usuarioRecuperacao"
+            [(ngModel)]="usuarioRecuperacao"
+            placeholder="Digite seu usuário"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn-login"
+          (click)="verificarUsuario()"
+        >
+          Continuar
+        </button>
+
+        <button
+          type="button"
+          class="btn-voltar"
+          (click)="voltarLogin()"
+        >
+          Voltar para o login
+        </button>
+
+      }
+
+      @if (etapaRecuperacao === 2) {
+
+        <div class="login-header">
+          <h1>Verificação</h1>
+          <p>Responda à pergunta de segurança</p>
+        </div>
+
+        <div class="pergunta">
+          {{ perguntaSeguranca }}
+        </div>
+
+        <div class="form-group">
+          <label for="respostaRecuperacao">
+            Resposta
+          </label>
+
+          <input
+            id="respostaRecuperacao"
+            type="text"
+            name="respostaRecuperacao"
+            [(ngModel)]="respostaRecuperacao"
+            placeholder="Digite sua resposta"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn-login"
+          (click)="verificarResposta()"
+        >
+          Verificar resposta
+        </button>
+
+        <button
+          type="button"
+          class="btn-voltar"
+          (click)="voltarLogin()"
+        >
+          Cancelar
+        </button>
+
+      }
+
+      @if (etapaRecuperacao === 3) {
+
+        <div class="login-header">
+          <h1>Nova senha</h1>
+          <p>Crie uma nova senha para sua conta</p>
+        </div>
+
+        <div class="form-group">
+          <label for="novaSenha">
+            Nova senha
+          </label>
+
+          <input
+            id="novaSenha"
+            type="password"
+            name="novaSenha"
+            [(ngModel)]="novaSenha"
+            placeholder="Digite a nova senha"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmarSenha">
+            Confirmar senha
+          </label>
+
+          <input
+            id="confirmarSenha"
+            type="password"
+            name="confirmarSenha"
+            [(ngModel)]="confirmarSenha"
+            placeholder="Digite novamente a senha"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn-login"
+          (click)="alterarSenha()"
+        >
+          Alterar senha
+        </button>
+
+        <button
+          type="button"
+          class="btn-voltar"
+          (click)="voltarLogin()"
+        >
+          Cancelar
+        </button>
+
+      }
+
+    </div>
+
+  }
+
+
+  @if (mostrarMensagem) {
+
+    <div class="modal-overlay">
+
+      <div class="modal-card">
+
+        <div class="modal-icon">
+          !
+        </div>
+
+        <h2>
+          {{ getTituloMensagem() }}
+        </h2>
+
+        <p>
+          {{ getTextoMensagem() }}
+        </p>
+
+        <button
+          type="button"
+          class="modal-button"
+          (click)="fecharMensagem()"
+        >
+          OK
+        </button>
+
+      </div>
+
+    </div>
+
+  }
 
 </div>
 </file>
 
 <file path="src/app/pages/login/login.scss">
 .login-page {
-  background-image: url('/assets/fundo-onibus.png');
-  background-size: cover;
-  background-position: center;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
   box-sizing: border-box;
+  background: #f5f5f5;
+  color: #202123;
 }
 
 .login-card {
-  width: min(100%, 420px);
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-  padding: 32px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  backdrop-filter: blur(18px);
+  width: 100%;
+  max-width: 400px;
+  padding: 36px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
-.brand {
+.login-header {
+  margin-bottom: 28px;
   text-align: center;
-  display: grid;
-  gap: 14px;
-  align-items: center;
 }
 
-.brand-icon {
-  width: 70px;
-  height: 70px;
-  margin: 0 auto;
-  display: grid;
-  place-items: center;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.85);
-  color: #b17d16;
+.login-header h1 {
+  margin: 0 0 8px;
   font-size: 28px;
-}
-
-.brand h1 {
-  margin: 0;
-  font-size: 24px;
-  color: #ffffff;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-}
-
-.brand-logo {
-  width: 82px;
-  height: auto;
-  margin: 0 auto;
-}
-
-.brand p {
-  margin: 0;
-  color: #f3f4f6;
-  font-size: 14px;
-  line-height: 1.6;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.login-form label {
-  display: grid;
-  gap: 10px;
-  font-size: 14px;
-  color: #ffffff;
-  width: 100%;
-}
-
-.login-form input {
-  width: 100%;
-  padding: 16px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  outline: none;
-  background: rgba(255, 255, 255, 0.92);
-  font-size: 14px;
-  color: #111827;
-}
-
-.login-form button {
-  width: 100%;
-  padding: 14px 16px;
-  border: none;
-  border-radius: 12px;
-  background: #d97706;
-  color: #fff;
   font-weight: 600;
+}
+
+.login-header p {
+  margin: 0;
+  color: #6b6b6b;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  box-sizing: border-box;
+  border: 1px solid #d8d8d8;
+  border-radius: 9px;
+  outline: none;
+  background: #ffffff;
+  color: #202123;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #202123;
+  box-shadow: 0 0 0 3px rgba(32, 33, 35, 0.08);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 9px;
+  background: #202123;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s;
 }
 
-.login-form input:focus {
-  border-color: #d97706;
-  box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.14);
+.btn-login:hover {
+  background: #333333;
 }
 
-.login-form button:hover {
-  background: #b45309;
+.btn-recuperar,
+.btn-voltar {
+  width: 100%;
+  margin-top: 14px;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: #555555;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-.forgot-link {
-  display: inline-block;
-  text-align: center;
-  color: #b46309;
-  font-size: 13px;
-  text-decoration: none;
-  margin-top: -4px;
-}
-
-.forgot-link:hover {
+.btn-recuperar:hover,
+.btn-voltar:hover {
+  color: #202123;
   text-decoration: underline;
 }
 
-.terms {
-  margin: 0;
-  font-size: 12px;
-  color: #6b7280;
-  text-align: center;
+.pergunta {
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 9px;
+  background: #f7f7f7;
+  color: #202123;
+  font-size: 14px;
   line-height: 1.5;
 }
 
-.terms a {
-  color: #b46309;
-  text-decoration: none;
+.recuperacao-card {
+  max-width: 420px;
 }
 
-.terms a:hover {
-  text-decoration: underline;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: rgba(0, 0, 0, 0.45);
+}
+
+
+.modal-card {
+  width: 100%;
+  max-width: 360px;
+
+  padding: 30px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-radius: 16px;
+
+  text-align: center;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+  animation: aparecerModal 0.2s ease-out;
+}
+
+.modal-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 18px;
+
+  border-radius: 50%;
+
+  background: #f1f1f1;
+  color: #202123;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.modal-card h2 {
+  margin: 0 0 10px;
+
+  color: #202123;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-card p {
+  margin: 0 0 24px;
+
+  color: #6b6b6b;
+
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal-button {
+  width: 100%;
+
+  padding: 11px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #202123;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background: #333333;
+}
+
+@keyframes aparecerModal {
+
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 500px) {
+
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 28px 22px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;
+  }
 }
 </file>
 
@@ -8590,20 +8987,204 @@ export class Login {
   usuario = '';
   senha = '';
 
+  // Controle da recuperação de senha
+  recuperandoSenha = false;
+  etapaRecuperacao = 1;
+
+  usuarioRecuperacao = '';
+  respostaRecuperacao = '';
+  novaSenha = '';
+  confirmarSenha = '';
+
+  perguntaSeguranca = '';
+
+  // Controle da mensagem flutuante
+  mensagemFlutuante = '';
+  mostrarMensagem = false;
+
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
 
- fazerLogin(): void {
-  const sucesso = this.authService.login(this.usuario, this.senha);
+  fazerLogin(): void {
 
-  if (sucesso) {
-    this.router.navigate(['/sistema']);
-  } else {
-    alert('Usuário ou senha inválidos!');
+    const sucesso = this.authService.login(
+      this.usuario,
+      this.senha
+    );
+
+    if (sucesso) {
+
+      this.router.navigate(['/sistema']);
+
+    } else {
+
+      this.mostrarMensagemFlutuante(
+        'Senha incorreta',
+        'Verifique sua senha e tente novamente.'
+      );
+    }
   }
-}
+
+  abrirRecuperacao(): void {
+
+    this.recuperandoSenha = true;
+    this.etapaRecuperacao = 1;
+
+    this.usuarioRecuperacao = '';
+    this.respostaRecuperacao = '';
+    this.novaSenha = '';
+    this.confirmarSenha = '';
+    this.perguntaSeguranca = '';
+  }
+
+  voltarLogin(): void {
+
+    this.recuperandoSenha = false;
+    this.etapaRecuperacao = 1;
+
+    this.usuarioRecuperacao = '';
+    this.respostaRecuperacao = '';
+    this.novaSenha = '';
+    this.confirmarSenha = '';
+    this.perguntaSeguranca = '';
+  }
+
+  verificarUsuario(): void {
+
+    if (!this.usuarioRecuperacao.trim()) {
+
+      this.mostrarMensagemFlutuante(
+        'Atenção',
+        'Digite seu usuário para continuar.'
+      );
+
+      return;
+    }
+
+    const usuario = this.authService.recuperarUsuario(
+      this.usuarioRecuperacao
+    );
+
+    if (!usuario) {
+
+      this.mostrarMensagemFlutuante(
+        'Usuário não encontrado',
+        'Verifique o usuário informado.'
+      );
+
+      return;
+    }
+
+    this.perguntaSeguranca = usuario.pergunta;
+
+    this.etapaRecuperacao = 2;
+  }
+
+  verificarResposta(): void {
+
+    const correta = this.authService.verificarResposta(
+      this.usuarioRecuperacao,
+      this.respostaRecuperacao
+    );
+
+    if (!correta) {
+
+      this.mostrarMensagemFlutuante(
+        'Resposta incorreta',
+        'A resposta de segurança está incorreta.'
+      );
+
+      return;
+    }
+
+    this.etapaRecuperacao = 3;
+  }
+
+  alterarSenha(): void {
+
+    if (!this.novaSenha || !this.confirmarSenha) {
+
+      this.mostrarMensagemFlutuante(
+        'Atenção',
+        'Preencha os dois campos de senha.'
+      );
+
+      return;
+    }
+
+    if (this.novaSenha.length < 4) {
+
+      this.mostrarMensagemFlutuante(
+        'Senha inválida',
+        'A senha precisa ter pelo menos 4 caracteres.'
+      );
+
+      return;
+    }
+
+    if (this.novaSenha !== this.confirmarSenha) {
+
+      this.mostrarMensagemFlutuante(
+        'Senhas diferentes',
+        'As duas senhas precisam ser iguais.'
+      );
+
+      return;
+    }
+
+    const alterada = this.authService.alterarSenha(
+      this.usuarioRecuperacao,
+      this.novaSenha
+    );
+
+    if (!alterada) {
+
+      this.mostrarMensagemFlutuante(
+        'Erro',
+        'Não foi possível alterar a senha.'
+      );
+
+      return;
+    }
+
+    this.mostrarMensagemFlutuante(
+      'Senha alterada',
+      'Sua senha foi alterada com sucesso.'
+    );
+
+    setTimeout(() => {
+      this.voltarLogin();
+    }, 1500);
+  }
+
+  mostrarMensagemFlutuante(
+    titulo: string,
+    mensagem: string
+  ): void {
+
+    this.mensagemFlutuante =
+      `${titulo}|${mensagem}`;
+
+    this.mostrarMensagem = true;
+  }
+
+  fecharMensagem(): void {
+
+    this.mostrarMensagem = false;
+    this.mensagemFlutuante = '';
+  }
+
+  getTituloMensagem(): string {
+
+    return this.mensagemFlutuante.split('|')[0] || '';
+  }
+
+  getTextoMensagem(): string {
+
+    return this.mensagemFlutuante.split('|')[1] || '';
+  }
 }
 </file>
 
@@ -12736,82 +13317,289 @@ import { Injectable } from '@angular/core';
 
 export type Perfil = 'admin' | 'colaborador';
 
+interface Usuario {
+  usuario: string;
+  senha: string;
+  perfil: Perfil;
+  nome: string;
+  pergunta: string;
+  resposta: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private usuarios = [
+  private usuarios: Usuario[] = [
     {
       usuario: 'admin',
       senha: '1234',
-      perfil: 'admin' as Perfil,
-      nome: 'Administrador'
+      perfil: 'admin',
+      nome: 'Administrador',
+      pergunta: 'Qual é o nome do sistema?',
+      resposta: 'tst'
     },
     {
       usuario: 'João da Silva',
       senha: '2345',
-      perfil: 'colaborador' as Perfil,
-      nome: 'João da Silva'
+      perfil: 'colaborador',
+      nome: 'João da Silva',
+      pergunta: 'Qual é o nome do sistema?',
+      resposta: 'tst'
     }
   ];
 
-  login(usuario: string, senha: string): boolean {
+  constructor() {
+    if (typeof window !== 'undefined') {
+      this.carregarUsuarios();
+    }
+  }
+
+  
+  private carregarUsuarios(): void {
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const usuariosSalvos = localStorage.getItem('usuarios');
+
+    if (usuariosSalvos) {
+
+      try {
+
+        this.usuarios = JSON.parse(usuariosSalvos);
+
+      } catch (erro) {
+
+        console.error(
+          'Erro ao carregar usuários:',
+          erro
+        );
+
+        localStorage.removeItem('usuarios');
+
+        this.salvarUsuarios();
+      }
+
+    } else {
+
+      this.salvarUsuarios();
+    }
+  }
+
+ 
+  private salvarUsuarios(): void {
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    localStorage.setItem(
+      'usuarios',
+      JSON.stringify(this.usuarios)
+    );
+  }
+
+  login(
+    usuario: string,
+    senha: string
+  ): boolean {
 
     const usuarioEncontrado = this.usuarios.find(
-      u => u.usuario.toLowerCase() === usuario.trim().toLowerCase()
-        && u.senha === senha
+      u =>
+        u.usuario.toLowerCase().trim()
+        === usuario.toLowerCase().trim()
+        &&
+        u.senha === senha
     );
 
     if (!usuarioEncontrado) {
       return false;
     }
 
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('perfil', usuarioEncontrado.perfil);
-    localStorage.setItem('nomeUsuario', usuarioEncontrado.nome);
+    if (typeof window !== 'undefined') {
+
+      localStorage.setItem(
+        'isLoggedIn',
+        'true'
+      );
+
+      localStorage.setItem(
+        'perfil',
+        usuarioEncontrado.perfil
+      );
+
+      localStorage.setItem(
+        'nomeUsuario',
+        usuarioEncontrado.nome
+      );
+    }
 
     return true;
   }
 
+
+  recuperarUsuario(
+    usuario: string
+  ): Usuario | null {
+
+    const usuarioEncontrado = this.usuarios.find(
+      u =>
+        u.usuario.toLowerCase().trim()
+        === usuario.toLowerCase().trim()
+    );
+
+    return usuarioEncontrado || null;
+  }
+
+  
+  verificarResposta(
+    usuario: string,
+    resposta: string
+  ): boolean {
+
+    const usuarioEncontrado =
+      this.recuperarUsuario(usuario);
+
+    if (!usuarioEncontrado) {
+      return false;
+    }
+
+    return (
+      usuarioEncontrado.resposta
+        .toLowerCase()
+        .trim()
+      ===
+      resposta
+        .toLowerCase()
+        .trim()
+    );
+  }
+
+ 
+  alterarSenha(
+    usuario: string,
+    novaSenha: string
+  ): boolean {
+
+    const indice = this.usuarios.findIndex(
+      u =>
+        u.usuario.toLowerCase().trim()
+        === usuario.toLowerCase().trim()
+    );
+
+    if (indice === -1) {
+      return false;
+    }
+
+    this.usuarios[indice].senha = novaSenha;
+
+    this.salvarUsuarios();
+
+    return true;
+  }
+
+
   logout(): void {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('perfil');
-    localStorage.removeItem('nomeUsuario');
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    localStorage.removeItem(
+      'isLoggedIn'
+    );
+
+    localStorage.removeItem(
+      'perfil'
+    );
+
+    localStorage.removeItem(
+      'nomeUsuario'
+    );
   }
 
+  
   isAuthenticated(): boolean {
-    return localStorage.getItem('isLoggedIn') === 'true';
+
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return (
+      localStorage.getItem(
+        'isLoggedIn'
+      ) === 'true'
+    );
   }
 
+ 
   getPerfil(): Perfil | null {
-    return localStorage.getItem('perfil') as Perfil | null;
+
+    if (typeof window === 'undefined') {
+      return null;
+    }
+
+    return localStorage.getItem(
+      'perfil'
+    ) as Perfil | null;
   }
+
 
   isAdmin(): boolean {
     return this.getPerfil() === 'admin';
   }
 
+ 
   isColaborador(): boolean {
     return this.getPerfil() === 'colaborador';
   }
 
+ 
   getNomeUsuario(): string {
-    return localStorage.getItem('nomeUsuario') || '';
-  }
- getUsuarioLogado(): { nome: string; role: string } | null {
-  const nome = localStorage.getItem('nomeUsuario');
-  const perfil = localStorage.getItem('perfil');
 
-  if (!nome || !perfil) {
-    return null;
+    if (typeof window === 'undefined') {
+      return '';
+    }
+
+    return (
+      localStorage.getItem(
+        'nomeUsuario'
+      ) || ''
+    );
   }
 
-  return {
-    nome: nome,
-    role: perfil
-  };
-}
+  
+  getUsuarioLogado(): {
+    nome: string;
+    role: string;
+  } | null {
+
+    if (typeof window === 'undefined') {
+      return null;
+    }
+
+    const nome =
+      localStorage.getItem(
+        'nomeUsuario'
+      );
+
+    const perfil =
+      localStorage.getItem(
+        'perfil'
+      );
+
+    if (!nome || !perfil) {
+      return null;
+    }
+
+    return {
+      nome: nome,
+      role: perfil
+    };
+  }
 }
 </file>
 
