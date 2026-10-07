@@ -92,6 +92,16 @@ export class Treinamentos implements OnInit {
     }
   }
 
+  treinamentoVisualizado: Treinamento | null = null;
+
+  verTreinamento(treinamento: Treinamento) {
+    this.treinamentoVisualizado = treinamento;
+  }
+
+  fecharVisualizacao() {
+    this.treinamentoVisualizado = null;
+  }
+
   editarTreinamento(treinamento: Treinamento) {
     this.treinamentoEditando = treinamento;
 

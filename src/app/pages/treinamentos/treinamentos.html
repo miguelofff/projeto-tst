@@ -1,6 +1,9 @@
 <h2>Treinamentos</h2>
 <div class="content-wrapper">
   <nav class="internal-nav">
+    <div class="training-actions">
+      <button class="btn-novo-treinamento" (click)="abrirFormulario()">Novo Treinamento</button>
+    </div>
     <a routerLink="#" routerLinkActive="active">Cadastro de Funcionários</a>
     <a routerLink="#" routerLinkActive="active">Participantes</a>
     <a routerLink="#" routerLinkActive="active">Certificados</a>
@@ -8,9 +11,6 @@
     <a routerLink="#" routerLinkActive="active">Controle de Validades</a>
   </nav>
 
-  <div class="training-actions">
-    <button class="btn-novo-treinamento" (click)="abrirFormulario()">Novo Treinamento</button>
-  </div>
   @if (formularioAberto) {
     <div class="formulario-treinamento">
       <div class="formulario-header">
@@ -122,7 +122,14 @@
           <td>{{ treinamento.status }}</td>
 
           <td class="acoes">
-            <button class="btn-ver">Ver</button>
+            <button class="btn-ver" (click)="verTreinamento(treinamento)">Ver</button>
+            @if (treinamentoVisualizado) {
+              <div class="modal-overlay">
+                <div class="modal">
+
+                </div>
+              </div>
+            }
             <button class="btn-editar" (click)="editarTreinamento(treinamento)">Editar</button>
           </td>
         </tr>
