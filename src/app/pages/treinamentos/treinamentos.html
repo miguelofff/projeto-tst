@@ -12,89 +12,62 @@
   </nav>
 
   @if (formularioAberto) {
-    <div class="formulario-treinamento">
-      <div class="formulario-header">
-        <h3>{{ treinamentoEditando ? 'Editar Treinamento' : 'Novo Treinamento' }}</h3>
+  <div class="formulario-treinamento">
+    <div class="formulario-header">
+      <h3>{{ treinamentoEditando ? 'Editar Treinamento' : 'Novo Treinamento' }}</h3>
+    </div>
+
+    <form (ngSubmit)="salvarTreinamento()">
+      <div class="form-group">
+        <label for="nome">Nome do Treinamento</label>
+        <input type="text" id="nome" [(ngModel)]="novoTreinamento.nome" name="nome"
+          placeholder="Ex.: Direção Defensiva para Motoristas" />
       </div>
 
-      <form (ngSubmit)="salvarTreinamento()">
+      <div class="form-row">
         <div class="form-group">
-          <label for="nome">Nome do Treinamento</label>
-          <input
-            type="text"
-            id="nome"
-            [(ngModel)]="novoTreinamento.nome"
-            name="nome"
-            placeholder="Ex.: Direção Defensiva para Motoristas"
-          />
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="norma">NR / Norma</label>
-            <input
-              type="text"
-              id="norma"
-              [(ngModel)]="novoTreinamento.norma"
-              name="norma"
-              placeholder="Ex.: NR-06"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="carga">Carga horária</label>
-            <input
-              type="number"
-              id="carga"
-              [(ngModel)]="novoTreinamento.cargaHoraria"
-              name="cargaHoraria"
-              placeholder="Ex.: 8"
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="validade">Validade</label>
-            <select id="validade" [(ngModel)]="novoTreinamento.validade" name="validade">
-              <option value="">Selecione</option>
-              <option value="6">6 meses</option>
-              <option value="12">12 meses</option>
-              <option value="24">24 meses</option>
-              <option value="36">36 meses</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="participantes">Participantes</label>
-            <input
-              type="number"
-              id="participantes"
-              [(ngModel)]="novoTreinamento.participantes"
-              name="participantes"
-              min="0"
-              placeholder="Ex.: 30"
-            />
-          </div>
+          <label for="norma">NR / Norma</label>
+          <input type="text" id="norma" [(ngModel)]="novoTreinamento.norma" name="norma" placeholder="Ex.: NR-06" />
         </div>
 
         <div class="form-group">
-          <label for="descricao">Descrição</label>
-          <textarea
-            id="descricao"
-            rows="4"
-            [(ngModel)]="novoTreinamento.descricao"
-            name="descricao"
-            placeholder="Descreva o objetivo e conteúdo do treinamento"
-          ></textarea>
+          <label for="carga">Carga horária</label>
+          <input type="number" id="carga" [(ngModel)]="novoTreinamento.cargaHoraria" name="cargaHoraria"
+            placeholder="Ex.: 8" />
         </div>
 
-        <div class="form-actions">
-          <button type="button" class="btn-cancelar" (click)="fecharFormulario()">Cancelar</button>
-          <button type="submit" class="btn-salvar">
-            {{ treinamentoEditando ? 'Salvar alterações' : 'Salvar treinamento' }}
-          </button>
+        <div class="form-group">
+          <label for="validade">Validade</label>
+          <select id="validade" [(ngModel)]="novoTreinamento.validade" name="validade">
+            <option value="">Selecione</option>
+            <option value="6">6 meses</option>
+            <option value="12">12 meses</option>
+            <option value="24">24 meses</option>
+            <option value="36">36 meses</option>
+          </select>
         </div>
-      </form>
-    </div>
+
+        <div class="form-group">
+          <label for="participantes">Participantes</label>
+          <input type="number" id="participantes" [(ngModel)]="novoTreinamento.participantes" name="participantes"
+            min="0" placeholder="Ex.: 30" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <textarea id="descricao" rows="4" [(ngModel)]="novoTreinamento.descricao" name="descricao"
+          placeholder="Descreva o objetivo e conteúdo do treinamento"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancelar" (click)="fecharFormulario()">Cancelar</button>
+        <button type="submit" class="btn-salvar">
+          {{ treinamentoEditando ? 'Salvar alterações' : 'Salvar treinamento' }}
+        </button>
+      </div>
+    </form>
+  </div>
   }
 
   <table>
@@ -112,28 +85,77 @@
     </thead>
     <tbody>
       @for (treinamento of treinamentos; track treinamento.id) {
-        <tr>
-          <td>{{ treinamento.nome }}</td>
-          <td>{{ treinamento.norma }}</td>
-          <td>{{ treinamento.descricao }}</td>
-          <td>{{ treinamento.cargaHoraria }} horas</td>
-          <td>{{ treinamento.validade }} meses</td>
-          <td>{{ treinamento.participantes }}</td>
-          <td>{{ treinamento.status }}</td>
+      <tr>
+        <td>{{ treinamento.nome }}</td>
+        <td>{{ treinamento.norma }}</td>
+        <td>{{ treinamento.descricao }}</td>
+        <td>{{ treinamento.cargaHoraria }} horas</td>
+        <td>{{ treinamento.validade }} meses</td>
+        <td>{{ treinamento.participantes }}</td>
+        <td>{{ treinamento.status }}</td>
 
-          <td class="acoes">
-            <button class="btn-ver" (click)="verTreinamento(treinamento)">Ver</button>
-            @if (treinamentoVisualizado) {
-              <div class="modal-overlay">
-                <div class="modal">
-
-                </div>
-              </div>
-            }
-            <button class="btn-editar" (click)="editarTreinamento(treinamento)">Editar</button>
-          </td>
-        </tr>
+        <td class="acoes">
+          <button class="btn-ver" (click)="verTreinamento(treinamento)">Ver</button>
+          <button class="btn-editar" (click)="editarTreinamento(treinamento)">Editar</button>
+        </td>
+      </tr>
       }
     </tbody>
   </table>
+
+  @if (treinamentoVisualizado) {
+  <div class="modal-overlay" (click)="fecharVisualizacao()">
+    <div class="modal-treinamento" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Detalhes do Treinamento</h3>
+        <button type="button" class="btn-fechar" (click)="fecharVisualizacao()"> x </button>
+      </div>
+      <div class="modal-conteudo">
+        <div class="campo-visualizacao">
+          <span>Nome do Treinamento</span>
+          <strong>{{ treinamentoVisualizado.nome }}</strong>
+        </div>
+
+        <div class="campo-visualizacao">
+          <span>NR / Norma</span>
+          <strong>{{ treinamentoVisualizado.norma }}</strong>
+        </div>
+
+        <div class="campo-visualizacao">
+          <span>Decscrição</span>
+          <p>{{ treinamentoVisualizado.descricao }}</p>
+        </div>
+
+        <div class="informacoes-treinamento">
+
+          <div class="campo-visualizacao">
+            <span>Carga Horária</span>
+            <strong>{{ treinamentoVisualizado.cargaHoraria }}</strong>
+          </div>
+          <div class="campo-visualizacao">
+            <span>Validade</span>
+            <strong>{{ treinamentoVisualizado.validade }}</strong>
+          </div>
+          <div class="campo-visualizacao">
+            <span>Participantes</span>
+            <strong>{{ treinamentoVisualizado.participantes }}</strong>
+          </div>
+          <div class="campo-visualizacao">
+            <span>Status</span>
+            <strong>{{ treinamentoVisualizado.status }}</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-fechar-modal" (click)="fecharVisualizacao()">Fechar</button>
+      </div>
+
+    </div>
+
+  </div>
+  }
+
 </div>

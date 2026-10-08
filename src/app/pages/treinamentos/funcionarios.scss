@@ -1,0 +1,411 @@
+h2 {
+    margin-bottom: 20px;
+    }
+    
+    button {
+    background: #28a745;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 15px;
+    }
+    
+    .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    }
+    
+    .funcionario-actions {
+    display: flex;
+    justify-content: flex-start;
+    }
+    
+    .btn-novo-funcionario {
+    background: #000;
+    color: white;
+    
+    padding: 10px 14px;
+    
+    border: none;
+    border-radius: 5px;
+    
+    font-size: 15px;
+    font-weight: 600;
+    
+    cursor: pointer;
+    
+    margin: 0;
+    
+    transition:
+    background-color 0.2s,
+    transform 0.1s;
+    
+    &:hover {
+    background-color: #1e1e1e;
+    }
+    
+    &:active {
+    transform: scale(0.98);
+    }
+    }
+    
+    .formulario-funcionario {
+    background: #fff;
+    
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    
+    padding: 24px;
+    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .formulario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-bottom: 24px;
+    
+    h3 {
+    margin: 0;
+    font-size: 20px;
+    }
+    }
+    
+    .btn-fechar {
+    background: transparent;
+    color: #555;
+    
+    border: none;
+    
+    font-size: 28px;
+    
+    cursor: pointer;
+    
+    margin: 0;
+    padding: 2px 8px;
+    
+    &:hover {
+    color: #000;
+    }
+    }
+    
+    .form-row {
+    display: flex;
+    gap: 16px;
+    }
+    
+    .form-group {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 6px;
+    margin-bottom: 18px;
+    
+    flex: 1;
+    
+    label {
+    font-weight: 600;
+    font-size: 14px;
+    }
+    
+    input,
+    select {
+    padding: 10px;
+    
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    font-family: inherit;
+    font-size: 14px;
+    
+    outline: none;
+    
+    &:focus {
+      border-color: #007bff;
+    }
+
+    
+    }
+    }
+    
+    .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    
+    gap: 10px;
+    margin-top: 10px;
+    
+    button {
+    margin: 0;
+    cursor: pointer;
+    }
+    }
+    
+    .btn-cancelar {
+    background: #e9ecef;
+    color: #333;
+    
+    &:hover {
+    background: #dfe3e6;
+    }
+    }
+    
+    .btn-salvar {
+    background: var(--gold);
+    color: white;
+    
+    &:hover {
+    background: var(--gold-deep);
+    }
+    }
+    
+    table {
+    width: 100%;
+    
+    border-collapse: collapse;
+    
+    background: white;
+    }
+    
+    th,
+    td {
+    padding: 10px;
+    
+    border: 1px solid #ddd;
+    }
+    
+    th {
+    background: #f5f5f5;
+    }
+    
+    .acoes {
+    display: flex;
+    
+    gap: 8px;
+    
+    white-space: nowrap;
+    
+    button {
+    margin: 0;
+    cursor: pointer;
+    }
+    }
+    
+    .btn-ver {
+    background: var(--charcoal);
+    color: white;
+    }
+    
+    .btn-editar {
+    background: #ffc107;
+    color: #212529;
+    }
+    
+    /* =========================
+    MODAL
+    ========================= */
+    
+    .modal-overlay {
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+    
+    width: 100%;
+    height: 100%;
+    
+    background: rgba(0, 0, 0, 0.6);
+    
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    
+    z-index: 1000;
+    }
+    
+    .modal-funcionario {
+    width: 90%;
+    max-width: 700px;
+    
+    max-height: 90vh;
+    
+    background: #fff;
+    
+    border-radius: 10px;
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    overflow: hidden;
+    }
+    
+    .modal-header {
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 20px 24px;
+    
+    border-bottom: 1px solid #ddd;
+    
+    h3 {
+    margin: 0;
+    
+
+    font-size: 21px;
+
+    
+    }
+    
+    .btn-fechar {
+    margin: 0;
+    
+
+    padding: 0 8px;
+    
+    background: transparent;
+    
+    color: #555;
+    
+    font-size: 28px;
+    
+    line-height: 1;
+    
+    cursor: pointer;
+    
+    &:hover {
+      color: #000;
+    }
+
+    
+    }
+    }
+    
+    .modal-conteudo {
+    padding: 24px;
+    
+    max-height: 60vh;
+    
+    overflow-y: auto;
+    }
+    
+    .campo-visualizacao {
+    display: flex;
+    
+    flex-direction: column;
+    
+    gap: 6px;
+    
+    margin-bottom: 20px;
+    
+    span {
+    font-size: 13px;
+    
+
+    font-weight: 600;
+    
+    color: #777;
+
+    
+    }
+    
+    strong {
+    font-size: 16px;
+    
+
+    color: #222;
+
+    
+    }
+    }
+    
+    .informacoes-funcionario {
+    display: grid;
+    
+    grid-template-columns: repeat(2, 1fr);
+    
+    gap: 16px;
+    
+    .campo-visualizacao {
+    margin-bottom: 0;
+    
+
+    padding: 14px;
+    
+    background: #f7f7f7;
+    
+    border-radius: 6px;
+
+    
+    }
+    }
+    
+    .modal-footer {
+    display: flex;
+    
+    justify-content: flex-end;
+    
+    padding: 16px 24px;
+    
+    border-top: 1px solid #ddd;
+    
+    .btn-fechar-modal {
+    margin: 0;
+    
+
+    background: var(--charcoal);
+    
+    color: white;
+    
+    padding: 10px 20px;
+    
+    border-radius: 5px;
+    
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+
+    
+    }
+    }
+    
+    /* =========================
+    RESPONSIVIDADE
+    ========================= */
+    
+    @media (max-width: 700px) {
+    .form-row {
+    flex-direction: column;
+    
+
+    gap: 0;
+    
+    }
+    
+    .informacoes-funcionario {
+    grid-template-columns: 1fr;
+    }
+    
+    table {
+    display: block;
+    
+
+    overflow-x: auto;
+
+    
+    }
+    
+    .modal-funcionario {
+    width: 95%;
+    }
+    }
+    

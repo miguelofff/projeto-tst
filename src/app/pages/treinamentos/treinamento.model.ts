@@ -8,3 +8,14 @@ export interface Treinamento {
   participantes: number;
   status: string;
 }
+
+export interface Funcionario {
+  id: number;
+  nome: string;
+  cpf: string;
+  cargo: string;
+  setor: string;
+  matricula: string;
+  dataAdmissao: string;
+  status: string;
+}

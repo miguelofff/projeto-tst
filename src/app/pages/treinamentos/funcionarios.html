@@ -1,0 +1,341 @@
+<h2>Cadastro de Funcionários</h2>
+
+<div class="content-wrapper">
+
+  <div class="funcionario-actions">
+    <button
+      class="btn-novo-funcionario"
+      (click)="abrirFormulario()"
+    >
+      Novo Funcionário
+    </button>
+  </div>
+
+@if (formularioAberto) { <div class="formulario-funcionario">
+
+  <div class="formulario-header">
+    <h3>
+      {{ funcionarioEditando ? 'Editar Funcionário' : 'Novo Funcionário' }}
+    </h3>
+
+    <button
+      type="button"
+      class="btn-fechar"
+      (click)="fecharFormulario()"
+    >
+      x
+    </button>
+  </div>
+
+  <form (ngSubmit)="salvarFuncionario()">
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="nome">Nome completo</label>
+
+        <input
+          type="text"
+          id="nome"
+          [(ngModel)]="novoFuncionario.nome"
+          name="nome"
+          placeholder="Ex.: João da Silva"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cpf">CPF</label>
+
+        <input
+          type="text"
+          id="cpf"
+          [(ngModel)]="novoFuncionario.cpf"
+          name="cpf"
+          placeholder="Ex.: 000.000.000-00"
+        />
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="matricula">Matrícula</label>
+
+        <input
+          type="text"
+          id="matricula"
+          [(ngModel)]="novoFuncionario.matricula"
+          name="matricula"
+          placeholder="Ex.: FUNC-001"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cargo">Cargo</label>
+
+        <input
+          type="text"
+          id="cargo"
+          [(ngModel)]="novoFuncionario.cargo"
+          name="cargo"
+          placeholder="Ex.: Motorista"
+        />
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="setor">Setor</label>
+
+        <input
+          type="text"
+          id="setor"
+          [(ngModel)]="novoFuncionario.setor"
+          name="setor"
+          placeholder="Ex.: Operacional"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="dataAdmissao">Data de admissão</label>
+
+        <input
+          type="date"
+          id="dataAdmissao"
+          [(ngModel)]="novoFuncionario.dataAdmissao"
+          name="dataAdmissao"
+        />
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label for="status">Status</label>
+
+        <select
+          id="status"
+          [(ngModel)]="novoFuncionario.status"
+          name="status"
+        >
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+          <option value="Afastado">Afastado</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+
+      <button
+        type="button"
+        class="btn-cancelar"
+        (click)="fecharFormulario()"
+      >
+        Cancelar
+      </button>
+
+      <button
+        type="submit"
+        class="btn-salvar"
+      >
+        {{ funcionarioEditando ? 'Salvar alterações' : 'Salvar funcionário' }}
+      </button>
+
+    </div>
+
+  </form>
+</div>
+
+}
+
+  <table>
+
+<thead>
+  <tr>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Matrícula</th>
+    <th>Cargo</th>
+    <th>Setor</th>
+    <th>Admissão</th>
+    <th>Status</th>
+    <th>Ações</th>
+  </tr>
+</thead>
+
+<tbody>
+
+  @for (funcionario of funcionarios; track funcionario.id) {
+
+    <tr>
+
+      <td>{{ funcionario.nome }}</td>
+
+      <td>{{ funcionario.cpf }}</td>
+
+      <td>{{ funcionario.matricula }}</td>
+
+      <td>{{ funcionario.cargo }}</td>
+
+      <td>{{ funcionario.setor }}</td>
+
+      <td>{{ funcionario.dataAdmissao }}</td>
+
+      <td>{{ funcionario.status }}</td>
+
+      <td class="acoes">
+
+        <button
+          class="btn-ver"
+          (click)="verFuncionario(funcionario)"
+        >
+          Ver
+        </button>
+
+        <button
+          class="btn-editar"
+          (click)="editarFuncionario(funcionario)"
+        >
+          Editar
+        </button>
+
+      </td>
+
+    </tr>
+
+  }
+
+</tbody>
+
+  </table>
+
+</div>
+
+@if (funcionarioVisualizado) {
+
+  <div
+    class="modal-overlay"
+    (click)="fecharVisualizacao()"
+  >
+
+<div
+  class="modal-funcionario"
+  (click)="$event.stopPropagation()"
+>
+
+  <div class="modal-header">
+
+    <h3>Detalhes do Funcionário</h3>
+
+    <button
+      type="button"
+      class="btn-fechar"
+      (click)="fecharVisualizacao()"
+    >
+      x
+    </button>
+
+  </div>
+
+  <div class="modal-conteudo">
+
+    <div class="campo-visualizacao">
+
+      <span>Nome completo</span>
+
+      <strong>
+        {{ funcionarioVisualizado.nome }}
+      </strong>
+
+    </div>
+
+    <div class="informacoes-funcionario">
+
+      <div class="campo-visualizacao">
+
+        <span>CPF</span>
+
+        <strong>
+          {{ funcionarioVisualizado.cpf }}
+        </strong>
+
+      </div>
+
+      <div class="campo-visualizacao">
+
+        <span>Matrícula</span>
+
+        <strong>
+          {{ funcionarioVisualizado.matricula }}
+        </strong>
+
+      </div>
+
+      <div class="campo-visualizacao">
+
+        <span>Cargo</span>
+
+        <strong>
+          {{ funcionarioVisualizado.cargo }}
+        </strong>
+
+      </div>
+
+      <div class="campo-visualizacao">
+
+        <span>Setor</span>
+
+        <strong>
+          {{ funcionarioVisualizado.setor }}
+        </strong>
+
+      </div>
+
+      <div class="campo-visualizacao">
+
+        <span>Data de admissão</span>
+
+        <strong>
+          {{ funcionarioVisualizado.dataAdmissao }}
+        </strong>
+
+      </div>
+
+      <div class="campo-visualizacao">
+
+        <span>Status</span>
+
+        <strong>
+          {{ funcionarioVisualizado.status }}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+    <button
+      type="button"
+      class="btn-fechar-modal"
+      (click)="fecharVisualizacao()"
+    >
+      Fechar
+    </button>
+
+  </div>
+
+</div>
+
+  </div>
+
+}
